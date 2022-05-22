@@ -22,6 +22,7 @@ func printCommandEvents(analyticsChannel <-chan *slacker.CommandEvent) {
 }
 
 func main() {
+	// Tokens disabled after testing of app - sorry script kiddies - was for testing
 	os.Setenv("SLACK_BOT_TOKEN", "xoxb-3550035254820-3557106628021-eeZ5KDwFxmPl6cW5X41WNrki")
 	os.Setenv("SLACK_APP_TOKEN", "xapp-1-A03H5NNHCBS-3545486019575-bf63ce9664c8e76f78174a4fbded6411d2dd8a7ace2d0ce04acec4444064d9fb")
 

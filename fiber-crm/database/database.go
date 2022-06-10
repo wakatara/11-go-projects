@@ -1,8 +1,6 @@
 package database
 
 import (
-	"fmt"
-	"github.com/wakatara/11-go-projects/fiber-crm/lead"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
@@ -22,7 +20,5 @@ func Connect() error {
 		panic(err)
 	}
 
-	Database.AutoMigrate(&lead.Lead{})
-	fmt.Println("DB Migrated.")
 	return nil
 }

@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/wakatara/11-go-projects/fiber-crm/lead"
+	"github.com/wakatara/11-go-projects/fiber-crm/database"
 	"github.com/gofiber/fiber"
 	)
 
@@ -25,6 +26,8 @@ func setupRoutes(app *fiber.App) {
 
 func main() {
 	app := fiber.New()
+	database.Connect()
+	database.Database.AutoMigrate(&lead.Lead{})
 	setupRoutes(app)
 	app.Listen(3000)
 }

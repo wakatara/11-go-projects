@@ -1,10 +1,11 @@
 package main
 
 import (
-	"github.com/wakatara/11-go-projects/fiber-crm/lead"
-	"github.com/wakatara/11-go-projects/fiber-crm/database"
+	"fmt"
 	"github.com/gofiber/fiber"
-	)
+	"github.com/wakatara/11-go-projects/fiber-crm/database"
+	"github.com/wakatara/11-go-projects/fiber-crm/lead"
+)
 
 func setupRoutes(app *fiber.App) {
 	app.Get("/api/v1/lead", lead.GetLeads)
@@ -13,21 +14,11 @@ func setupRoutes(app *fiber.App) {
 	app.Delete("/api/v1/lead/:id", lead.DeleteLead)
 }
 
-// func initDatabase() {
-// 	var err error
-// 	database.DBConn, err = gorm.Open("sqlite3", "leads.db")
-// 	if err != nil {
-// 		panic("failed to connect to database")
-// 	}
-// 	fmt.Println("Connection opened to DB")
-// 	database.DBConn.AutoMigrate(&lead.Lead{})
-// 	fmt.Println("DB Migrated")
-// }
-
 func main() {
 	app := fiber.New()
 	database.Connect()
 	database.Database.AutoMigrate(&lead.Lead{})
+	fmt.Println("DB Migrated")
 	setupRoutes(app)
 	app.Listen(3000)
 }

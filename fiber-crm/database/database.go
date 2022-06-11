@@ -1,6 +1,7 @@
 package database
 
 import (
+	"fmt"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
@@ -19,6 +20,6 @@ func Connect() error {
 	if err != nil {
 		panic(err)
 	}
-
+	fmt.Println("Connected to DB")
 	return nil
 }
